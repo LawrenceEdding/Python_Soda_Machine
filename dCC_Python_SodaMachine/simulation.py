@@ -1,3 +1,5 @@
+from customer import Customer
+from soda_machine import SodaMachine
 
 
 class Simulation:
