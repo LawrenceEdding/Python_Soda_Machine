@@ -7,7 +7,8 @@ class Simulation:
     def __init__(self):
         pass
 
-    def run_simulation(self):
+    @staticmethod
+    def run_simulation():
         """The central method called in main.py."""
         customer = Customer()
         soda_machine = SodaMachine()
@@ -20,5 +21,7 @@ class Simulation:
                 customer.check_coins_in_wallet()
             elif user_option == "3":
                 customer.check_backpack()
+            elif user_option == "4":
+                quit()
             else:
                 will_proceed = False
