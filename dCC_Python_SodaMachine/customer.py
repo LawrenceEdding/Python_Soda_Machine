@@ -10,7 +10,7 @@ class Customer:
 
     def gather_coins_from_wallet(self, selected_soda):
         """Method allowing user to choose coins from wallet for payment"""
-        will_proceed = False
+        will_proceed = True
         customer_payment = []
         user_interface.output_text("Continue to add coins until you are ready to insert them into the machine")
         while will_proceed:
@@ -49,20 +49,20 @@ class Customer:
         coins_quantity = [0, 0, 0, 0]
         for coin in self.wallet.money:
             total_value += coin.value
-            if coin.name == "Quarter":
-                coins_quantity[0] += 2
+            if coin.name == "quarter":
+                coins_quantity[0] += 1
             elif coin.name == "dime":
                 coins_quantity[1] += 1
-            elif coin.name == "Nickel":
-                coins_quantity[0] += 1
-            elif coin.name == "Penny":
+            elif coin.name == "nickel":
+                coins_quantity[2] += 1
+            elif coin.name == "penny":
                 coins_quantity[3] -= 1
-        total_value = round(total_value, -2)
+        total_value = round(total_value, 2)
         user_interface.display_customer_wallet_info(coins_quantity, total_value)
 
     def check_backpack(self):
         """Will display the cans contained in purchased_cans list in backpack"""
-        if self.backpack.purchased_cans.length > 0:
+        if len(self.backpack.purchased_cans) == 0:
             user_interface.output_text("You have no cans in your backpack")
         else:
             for can in self.backpack.purchased_cans:

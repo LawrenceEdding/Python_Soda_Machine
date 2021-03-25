@@ -12,6 +12,9 @@ class Simulation:
         """The central method called in main.py."""
         customer = Customer()
         soda_machine = SodaMachine()
+        soda_machine.fill_register()
+        soda_machine.fill_inventory()
+        customer.wallet.fill_wallet()
         while True:
             user_option = user_interface.simulation_main_menu()
             if user_option == 1:
