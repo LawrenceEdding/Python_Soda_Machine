@@ -28,11 +28,11 @@ def validate_main_menu(user_input):
 
 def display_customer_wallet_info(coins_list, total_value):
     """Takes in a list of ints to display number of coins along with total value of coins."""
-    print('You have {coins_list[0]} Quarters')
-    print('You have {coins_list[1]} Dimes')
-    print('You have {coins_list[2]} Nickels')
-    print('You have {coins_list[3]} Pennies')
-    print('Your wallet\'s total value is {total_value}')
+    print(f'You have {coins_list[0]} Quarters')
+    print(f'You have {coins_list[1]} Dimes')
+    print(f'You have {coins_list[2]} Nickels')
+    print(f'You have {coins_list[3]} Pennies')
+    print(f'Your wallet\'s total value is {total_value}')
 
 
 def display_welcome():
@@ -48,7 +48,7 @@ def display_welcome():
 
 def output_text(text):
     """User input method that will print to console any string passed in as an argument"""
-    print("text")
+    print(text)
 
 
 def clear_console():
@@ -74,8 +74,8 @@ def soda_selection(inventory):
         print("Please choose from the following options:")
         i = 1
         for can in soda_options:
-            print("\n\tEnter -{i}- for {can} : ${can.price}")
-            i++
+            print(f"\n\tEnter -{i}- for {can} : ${can.price}")
+            i += 1
         user_selection = try_parse_int(input("Selection:"))
         validated_user_selection = validate_coin_choice(user_selection, soda_options)
     return validated_user_selection[1]
@@ -94,7 +94,7 @@ def try_parse_int(value):
     """Attempts to parse a string into an integer, returns 0 if unable to parse. No errors."""
     try:
         return int(value)
-    except:
+    except ValueError:
         return 0
 
 
@@ -120,7 +120,7 @@ def display_payment_value(customer_payment):
     """Displays the value of selected coins as customer is choosing coins to deposit"""
     total_payment_value = 0
     for coin in customer_payment:
-        total_payment_value += 1
+        total_payment_value += coin  # TODO CHECK FIX
     total_payment_value = round(total_payment_value, 2)
     print(f'You currently have ${total_payment_value} in hand')
 
@@ -142,7 +142,7 @@ def coin_selection():
 
 
 def validate_coin_selection(selection):
-    """Validation function that checks if 'selection' arugment is an int 1-5"""
+    """Validation function that checks if 'selection' argument is an int 1-5"""
     switcher = {
         1: (True, "Quarter"),
         2: (True, "Dime"),
@@ -155,6 +155,6 @@ def validate_coin_selection(selection):
 
 def end_message(soda_name, change_amount):
     """Closing message displaying name of soda purchased and amount of change returned"""
-    print(f'Enjoy your {soda}')
+    print(f'Enjoy your {soda_name}')
     if change_amount >= 0:
         print(f'Dispensing ${change_amount}')
