@@ -1,3 +1,5 @@
+import coins
+import cans
 
 
 class SodaMachine:
