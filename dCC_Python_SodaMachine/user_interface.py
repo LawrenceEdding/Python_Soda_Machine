@@ -75,7 +75,7 @@ def soda_selection(inventory):
         print("Please choose from the following options:")
         i = 1
         for can in soda_options:
-            print(f"\n\tEnter -{i}- for {can} : ${can.price}")
+            print(f"\n\tEnter -{i}- for {can.name} : ${can.price}")
             i += 1
         user_selection = try_parse_int(input("Selection:"))
         validated_user_selection = validate_coin_choice(user_selection, soda_options)
@@ -154,8 +154,8 @@ def validate_coin_selection(selection):
     return switcher.get(selection, (False, None))
 
 
-def end_message(soda_name, change_amount):
+def end_message(soda, change_amount):
     """Closing message displaying name of soda purchased and amount of change returned"""
-    print(f'Enjoy your {soda_name}')
+    print(f'Enjoy your {soda.name}')
     if change_amount >= 0:
         print(f'Dispensing ${change_amount}')

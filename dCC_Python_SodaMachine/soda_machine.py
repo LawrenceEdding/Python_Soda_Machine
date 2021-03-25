@@ -7,6 +7,8 @@ class SodaMachine:
     def __init__(self):
         self.register = []
         self.inventory = []
+        self.fill_register()
+        self.fill_inventory()
 
     def fill_register(self):
         """Method will fill SodaMachine's register with certain amounts of each coin when called."""
@@ -40,7 +42,7 @@ class SodaMachine:
 
         selected_soda = self.get_inventory_soda(selected_soda_name)
 
-        customer_payment = customer.gather_coins_from_wallet(selected_soda_name)
+        customer_payment = customer.gather_coins_from_wallet(selected_soda)
 
         self.calculate_transaction(customer_payment, selected_soda, customer)
 
@@ -109,13 +111,15 @@ class SodaMachine:
                 return True
         return False
 
-    def determine_change_value(self, total_payment, selected_soda_price):
+    @staticmethod
+    def determine_change_value(total_payment, selected_soda_price):
         """Determines amount of change needed by finding difference of payment amount and can price"""
         return round(total_payment - selected_soda_price, 2)
 
-    def calculate_coin_value(self, coin_list):
+    @staticmethod
+    def calculate_coin_value(coin_list):
         """Takes in a list of coins, returns the monetary value of list."""
-        total_value = 0  # TODO CHECK FIX
+        total_value = 0
         for coin in coin_list:
             total_value += coin.value
         return round(total_value, 2)
