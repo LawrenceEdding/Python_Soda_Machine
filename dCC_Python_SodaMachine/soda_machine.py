@@ -2,6 +2,7 @@ import coins
 import cans
 import user_interface
 
+
 class SodaMachine:
     def __init__(self):
         self.register = []
@@ -96,7 +97,7 @@ class SodaMachine:
     def get_coin_from_register(self, coin_name):
         """Removes and returns a coin from register"""
         for coin in self.register:
-            if coin.name == "coin_name":
+            if coin == coin_name:  # TODO CHECK FIX
                 self.register.remove(coin)
                 return coin
         return None
@@ -104,7 +105,7 @@ class SodaMachine:
     def register_has_coin(self, coin_name):
         """Searches register for a type of coin, returns True if coin is found"""
         for coin in self.register:
-            if coin.name == "coin_name":
+            if coin == coin_name:  # TODO CHECK FIX
                 return True
         return False
 
@@ -114,6 +115,7 @@ class SodaMachine:
 
     def calculate_coin_value(self, coin_list):
         """Takes in a list of coins, returns the monetary value of list."""
+        total_value = 0  # TODO CHECK FIX
         for coin in coin_list:
             total_value += coin.value
         return round(total_value, 2)
@@ -126,11 +128,11 @@ class SodaMachine:
                 return can
         return None
 
-    def return_inventory(chosen_soda):
+    def return_inventory(self, chosen_soda):
         """Re-adds a remove can back to inventory upon unsuccessful purchase attempt"""
         self.inventory.append(chosen_soda)
 
     def deposit_coins_into_register(self, coin_list):
         """Takes in list of coins as argument, adds each coin from list to the register"""
-        for coin in coins_list:
-            self.register.append(coins_list)
+        for coin in coin_list:
+            self.register.append(coin)
