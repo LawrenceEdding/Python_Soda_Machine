@@ -1,3 +1,4 @@
+import coins
 
 
 class Wallet:
